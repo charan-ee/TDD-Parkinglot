@@ -1,4 +1,10 @@
 package com.charan.parkingsystem.vehicle;
 
-public class Vehicle {
+import com.charan.parkingsystem.Types.VehicleType;
+interface Vehicle {
+    String getRegistrationNumber();
+
+    String getColour();
+
+    VehicleType getVehicleType();
 }
