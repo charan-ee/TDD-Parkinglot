@@ -1,7 +1,8 @@
 package com.charan.parkingsystem.vehicle;
 
 import com.charan.parkingsystem.Types.VehicleType;
-interface Vehicle {
+
+public interface Vehicle {
     String getRegistrationNumber();
 
     String getColour();

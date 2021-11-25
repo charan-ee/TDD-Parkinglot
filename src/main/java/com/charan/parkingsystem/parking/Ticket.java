@@ -18,6 +18,10 @@ public class Ticket {
         this.id = id;
     }
 
+    public int getFloorNo(){
+        return floor.getFloorNo();
+    }
+
     public ParkingSlot getSlot() {
         return slot;
     }

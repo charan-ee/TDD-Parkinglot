@@ -10,23 +10,34 @@ public class ParkingFloor {
     private boolean isFull;
     private List<ParkingSlot> availableSlotsByType;
 
-    public ParkingFloor(int floorNo, List<ParkingSlot> floorSlots ){
+    public ParkingFloor(int floorNo, List<ParkingSlot> floorSlots) {
         this.floorNo = floorNo;
         this.floorSlots = floorSlots;
     }
 
-    public boolean checkIsFull(){
+    public boolean checkIsFull() {
+        for (ParkingSlot slot : floorSlots) {
+            if (slot.getIsFree()) {
+                isFull = true;
+                return isFull;
+            }
+        }
         return isFull;
     }
 
-    public List<ParkingSlot> findSlotsByType(VehicleType vehicleType){
-        for(ParkingSlot slot: floorSlots){
-            if(slot.getIsFree() && slot.getSpotType() == vehicleType){
+    public int getFloorNo() {
+        return floorNo;
+    }
+
+    public List<ParkingSlot> findSlotsByType(VehicleType vehicleType) {
+        for (ParkingSlot slot : floorSlots) {
+            if (slot.getIsFree() && slot.getSpotType() == vehicleType) {
                 availableSlotsByType.add(slot);
             }
         }
         return availableSlotsByType;
     }
+
 
     public List<ParkingSlot> getFloorSlots() {
         return floorSlots;

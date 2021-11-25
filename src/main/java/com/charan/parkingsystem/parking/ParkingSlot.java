@@ -8,7 +8,8 @@ public class ParkingSlot {
     private boolean isFree = true;
 
 
-    public ParkingSlot(){
+    public ParkingSlot(int id){
+        this.slotID = id;
     }
 
     public ParkingSlot(int id, Types.VehicleType type){
@@ -16,8 +17,16 @@ public class ParkingSlot {
         this.spotType = type;
     }
 
+    public int getSlotID() {
+        return slotID;
+    }
+
     public boolean getIsFree(){
         return isFree;
+    }
+
+    public void setFree(){
+        isFree = true;
     }
 
     public void setOccupied(){
