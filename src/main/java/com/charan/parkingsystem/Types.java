@@ -7,7 +7,9 @@ public class Types {
 
     public enum ParkingSlotType {}
 
-    public enum DisplayType {}
+    public enum DisplayType {
+        FREE_COUNT, FREE_SLOTS, OCCUPIED_SLOTS
+    }
 
     public enum Command {}
 }

@@ -1,7 +1,11 @@
 package com.charan.parkingsystem.parking;
 
 import com.charan.parkingsystem.Types;
+import com.charan.parkingsystem.display.BikeDisplay;
+import com.charan.parkingsystem.display.CarDisplay;
+import com.charan.parkingsystem.display.TruckDisplay;
 import com.charan.parkingsystem.strategy.ParkStrategy;
+import com.charan.parkingsystem.vehicle.Car;
 import com.charan.parkingsystem.vehicle.Vehicle;
 
 import java.util.*;
@@ -87,6 +91,23 @@ public class ParkingLot {
             }
         }
         return null;
+    }
+
+    public void DisplaySlots(Types.DisplayType displayType, Types.VehicleType vehicleType){
+        switch (vehicleType){
+            case CAR -> {
+                CarDisplay carDisplay = new CarDisplay();
+                carDisplay.displayHelper(displayType, floorList);
+            }
+            case BIKE -> {
+                BikeDisplay bikeDisplay = new BikeDisplay();
+                bikeDisplay.displayHelper(displayType, floorList);
+            }
+            case TRUCK -> {
+                TruckDisplay truckDisplay = new TruckDisplay();
+                truckDisplay.displayHelper(displayType, floorList);
+            }
+        }
     }
 }
 
