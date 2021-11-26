@@ -5,7 +5,6 @@ import com.charan.parkingsystem.display.BikeDisplay;
 import com.charan.parkingsystem.display.CarDisplay;
 import com.charan.parkingsystem.display.TruckDisplay;
 import com.charan.parkingsystem.strategy.ParkStrategy;
-import com.charan.parkingsystem.vehicle.Car;
 import com.charan.parkingsystem.vehicle.Vehicle;
 
 import java.util.*;
@@ -15,7 +14,7 @@ public class ParkingLot {
     private final int slotsPerFloor;
     private final int noOfFloors;
     private Map<Ticket, Vehicle> ticketVehicleMap = new HashMap<>();
-    private List<ParkingFloor> floorList;
+    private List<ParkingFloor> floorList = new ArrayList<>();
 
     private static ParkingLot instance;
 
@@ -27,8 +26,8 @@ public class ParkingLot {
     }
 
     private List<ParkingFloor> setFloorList() {
-        List<ParkingSlot> slotsListOnFloor = createSlotList();
         for (int i = 1; i <= this.noOfFloors; i++) {
+            List<ParkingSlot> slotsListOnFloor = createSlotList();
             ParkingFloor floor = new ParkingFloor(i, slotsListOnFloor);
             floorList.add(floor);
         }
@@ -37,7 +36,7 @@ public class ParkingLot {
 
     private List<ParkingSlot> createSlotList() {
         List<ParkingSlot> emptySlots = new ArrayList<>();
-        for (int i = 1; i < this.slotsPerFloor; i++) {
+        for (int i = 1; i <= this.slotsPerFloor; i++) {
             ParkingSlot slot = new ParkingSlot(i);
             emptySlots.add(slot);
         }
@@ -65,8 +64,10 @@ public class ParkingLot {
         if (ticket != null) {
             ticket.setId(this.id + "_" + ticket.getFloorNo() + "_" + ticket.getSlot().getSlotID());
             ticketVehicleMap.put(ticket, vehicle);
+            System.out.println("Parked Vehicle. Ticket ID: " + ticket.getId());
             return true;
         }
+        System.out.println("Parking" + vehicle.getColour() + " " + vehicleType + " Unsuccessful");
         return false;
     }
 
@@ -108,6 +109,10 @@ public class ParkingLot {
                 truckDisplay.displayHelper(displayType, floorList);
             }
         }
+    }
+
+    public String toString() {
+        return "Created parking lot with " + this.noOfFloors+ " floors and " + this.slotsPerFloor + " slots per floor";
     }
 }
 

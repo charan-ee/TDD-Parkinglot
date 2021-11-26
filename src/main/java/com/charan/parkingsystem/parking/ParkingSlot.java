@@ -3,16 +3,15 @@ package com.charan.parkingsystem.parking;
 import com.charan.parkingsystem.Types;
 
 public class ParkingSlot {
-    private int slotID;
+    private final int slotID;
     private Types.VehicleType spotType;
     private boolean isFree = true;
 
-
-    public ParkingSlot(int id){
+    public ParkingSlot(int id) {
         this.slotID = id;
     }
 
-    public ParkingSlot(int id, Types.VehicleType type){
+    public ParkingSlot(int id, Types.VehicleType type) {
         this.slotID = id;
         this.spotType = type;
     }
@@ -21,23 +20,23 @@ public class ParkingSlot {
         return slotID;
     }
 
-    public boolean getIsFree(){
+    public boolean getIsFree() {
         return isFree;
     }
 
-    public void setFree(){
+    public void setFree() {
         isFree = true;
     }
 
-    public void setOccupied(){
+    public void setOccupied() {
         isFree = false;
     }
 
-    public Types.VehicleType getSpotType(){
+    public Types.VehicleType getSpotType() {
         return spotType;
     }
 
-    public void setSpotType(Types.VehicleType spotType){
+    public void setSpotType(Types.VehicleType spotType) {
         this.spotType = spotType;
     }
 
