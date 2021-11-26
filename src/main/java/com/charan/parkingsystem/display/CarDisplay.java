@@ -10,17 +10,6 @@ import java.util.List;
 public class CarDisplay implements DisplayStrategy {
 
     @Override
-    public void displayHelper(Types.DisplayType displayType, List<ParkingFloor> floorList) {
-        switch (displayType) {
-            case FREE_COUNT -> getFreeCount(floorList);
-            case FREE_SLOTS -> getFreeSlots(floorList);
-            case OCCUPIED_SLOTS -> getOccupiedSlots(floorList);
-            default -> throw new IllegalStateException("Unexpected value: " + displayType);
-        }
-
-    }
-
-    @Override
     public void getFreeCount(List<ParkingFloor> floors) {
         for (ParkingFloor floor : floors) {
             int count = 0;

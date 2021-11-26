@@ -20,7 +20,7 @@ public class App {
         while (true) {
             input_command = input.nextLine();
             commands = input_command.split(" ");
-            if (input_command.equals("exit")) {
+            if (input_command.equals("q")) {
                 break;
             }
 
@@ -48,6 +48,7 @@ public class App {
                 case "unpark_vehicle" -> {
                     parkingLot.unParkVehicle(commands[1].toUpperCase());
                 }
+                default -> System.out.println("Please enter the right command (Enter 'q' to exit the terminal)" );
             }
         }
     }

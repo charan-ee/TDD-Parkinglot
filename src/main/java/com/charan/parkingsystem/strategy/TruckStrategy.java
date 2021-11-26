@@ -9,13 +9,12 @@ import java.util.List;
 
 public class TruckStrategy implements ParkStrategy {
     public Ticket park(Vehicle vehicle, List<ParkingFloor> floorList) {
+        int start = 1;
+        int end = 1;
         Ticket ticket = null;
-        for (int i = 0; i < floorList.size(); i++) {
-            ParkingFloor floor = floorList.get(i);
-            List<ParkingSlot> slotsInFloor = floor.getFloorSlots();
-            for (int j = 1; j <= 1; j++) {
-                ParkingSlot slot = slotsInFloor.get(j);
-                if (slot.getIsFree()) {
+        for (ParkingFloor floor : floorList) {
+            for (ParkingSlot slot: floor.getFloorSlots()) {
+                if (slot.getIsFree() && slot.getSlotID() == start) {
                     slot.setOccupied();
                     ticket = new Ticket(floor, slot);
                     return ticket;

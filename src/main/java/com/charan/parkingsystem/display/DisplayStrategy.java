@@ -7,7 +7,15 @@ import java.util.List;
 
 public interface DisplayStrategy {
     List<ParkingFloor> floorList = null;
-    void displayHelper(Types.DisplayType displayType, List<ParkingFloor> floorList);
+    default void displayHelper(Types.DisplayType displayType, List<ParkingFloor> floorList) {
+        switch (displayType) {
+            case FREE_COUNT -> getFreeCount(floorList);
+            case FREE_SLOTS -> getFreeSlots(floorList);
+            case OCCUPIED_SLOTS -> getOccupiedSlots(floorList);
+            default -> throw new IllegalStateException("Unexpected value: " + displayType);
+        }
+
+    }
 
     void getFreeSlots(List<ParkingFloor> floorList);
 
